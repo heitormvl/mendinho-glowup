@@ -1,0 +1,15 @@
+name: 'Assert Branch Naming'
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Branch Name
+        uses: deepakputhraya/action-branch-name@master
+        with:
+          regex: '^(feat|fix|docs|refactor)\/.*'
+          allowed_prefixes: 'feat/,fix/,docs/,refactor/'
+          ignore: main
